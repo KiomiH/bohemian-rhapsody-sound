@@ -1,5 +1,6 @@
 var song;
 var Counter = 0;
+var button;
 
 function preload(){
 	song= loadSound("Queen_-_Bohemian_Rhapsody_Official_Video_hight.mp3");
@@ -14,13 +15,18 @@ function setup() {
   analyzer = new p5.Amplitude();
   analyzer.setInput(song);
 	angleMode(DEGREES);
+	
+	button = createButton('Stop to move on to next sketch');
+	button.position(130,20);
+	button.size(200,30);
+	button.mousePressed(Stop);
 }
 
 function draw() {
   background(255,90,160);
 
   var rms = analyzer.getLevel();
-	print(rms) //
+//	print(rms) //
 	var NormRms = rms/.2 
 
 	//first
@@ -53,12 +59,10 @@ function draw() {
 	triangle(1070+50*NormRms,340,1100,300-50*NormRms,1130-50*NormRms,340);
 }
 
-function mousePressed() {
+function Stop() {
   if (song.isPlaying() ) {
     song.stop();
-    background(255,0,0);
   } else {
     song.play();
-    background(0,255,0);
   }
 }
