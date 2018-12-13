@@ -16,10 +16,15 @@ function setup() {
   analyzer.setInput(song);
 	angleMode(DEGREES);
 	
-	button = createButton('Stop to move on to next sketch');
-	button.position(130,20);
-	button.size(200,30);
-	button.mousePressed(Stop);
+	pausebutton = createButton("pause");
+	pausebutton.position(130,60)
+	pausebutton.size(50,35)
+	pausebutton.mousePressed(pausesong);
+	
+	playbutton = createButton("play");
+	playbutton.position(130,20)
+	playbutton.size(50,35)
+	playbutton.mousePressed(playsong);
 }
 
 function draw() {
@@ -59,10 +64,9 @@ function draw() {
 	triangle(1070+50*NormRms,340,1100,300-50*NormRms,1130-50*NormRms,340);
 }
 
-function Stop() {
-  if (song.isPlaying() ) {
-    song.stop();
-  } else {
-    song.play();
-  }
+function pausesong(){
+	pausebutton.mousePressed = song.pause();
+	}
+function playsong(){
+	playbutton.mousePressed = song.play();
 }
