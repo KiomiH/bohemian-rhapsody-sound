@@ -1,6 +1,6 @@
 var song;
 var Counter = 0;
-var pausebutton;
+//var pausebutton;
 var playbutton;
 
 function preload(){
@@ -17,15 +17,15 @@ function setup() {
   analyzer.setInput(song);
 	angleMode(DEGREES);
 	
-	pausebutton = createButton("pause");
+	/*pausebutton = createButton("pause");
 	pausebutton.position(130,60)
 	pausebutton.size(50,35)
-	pausebutton.mousePressed(pausesong);
+	pausebutton.mousePressed(pausesong);*/
 	
 	playbutton = createButton("play");
 	playbutton.position(130,20)
 	playbutton.size(50,35)
-	playbutton.mousePressed(playsong);
+	playbutton.mousePressed(togglePlaying);
 }
 
 function draw() {
@@ -65,9 +65,15 @@ function draw() {
 	triangle(1070+50*NormRms,340,1100,300-50*NormRms,1130-50*NormRms,340);
 }
 
-function pausesong(){
+/*function pausesong(){
 	pausebutton.mousePressed = song.pause();
+	}*/
+function togglePlaying(){
+	if(!song.isPlaying()){
+		song.play();
+		playbutton.html("pause");
+	} else {
+		song.pause();
+		playbutton.html("play");
 	}
-function playsong(){
-	playbutton.mousePressed = song.play();
 }
