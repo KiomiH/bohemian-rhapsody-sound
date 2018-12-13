@@ -1,6 +1,7 @@
 var song;
 var Counter = 0;
-var button;
+var pausebutton;
+var playbutton;
 
 function preload(){
 	song= loadSound("Queen_-_Bohemian_Rhapsody_Official_Video_hight.mp3");
